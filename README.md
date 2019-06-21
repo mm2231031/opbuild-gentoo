@@ -59,17 +59,17 @@
 
 ### 卸载
 
-    rm -rf /etc/profile.d/opbuild.sh &&docker rmi jackmo233/opbuild:latest
+    rm -rf /etc/profile.d/opbuild.sh &&docker rmi jackmo233/opbuild-gentoo:latest
     
 ## 自己生产镜像
 
 ### 下载Dockerfile （用vim打开Dockerfile，按照提示修改）
 
-    git clone https://github.com/mm2231031/opbuild.git
+    git clone https://github.com/mm2231031/opbuild-gentoo.git
 
 ### 生产镜像
 
-    cd opbuild
+    cd opbuild-gentoo
     docker build --tag myopmake:latest ./
 
 ### 生成编译命令
