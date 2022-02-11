@@ -4,19 +4,19 @@ ADD src/ /src/
 RUN mkdir -p  /opt/opbuild && \
         useradd -d /opt/opbuild -s /bin/bash opbuild && \
     chown -R opbuild:opbuild /opt/opbuild && \
-        emerge-webrsync && \
-    emerge unzip wget curl bzip2 p7zip && \
-        mkdir -p /etc/portage/sets/ && echo \
-    app-arch/{bzip2,sharutils,unzip,zip} sys-process/time \
-        app-text/asciidoc \
-    dev-libs/{libusb-compat,libxslt,openssl} dev-util/intltool \
-        dev-vcs/{git,mercurial} net-misc/{rsync,wget} \
-    sys-apps/util-linux sys-devel/{bc,bin86,dev86} \
-        sys-libs/{ncurses,zlib} virtual/perl-ExtUtils-MakeMaker \
-        | sed 's/\s/\n/g' \
-            | sort \
-                    | tee /etc/portage/sets/openwrt-prerequisites \
-                        && emerge -DuvN '@openwrt-prerequisites' && rm -rf /usr/portage/* && \
+        echo \
+app-arch/{bzip2,sharutils,unzip,zip} sys-process/time \
+app-text/asciidoc \
+dev-libs/{libusb-compat,libxslt,openssl} dev-util/intltool \
+dev-vcs/{git,mercurial} net-misc/{rsync,wget} \
+sys-apps/util-linux sys-devel/{bc,bin86,dev86} \
+sys-libs/{ncurses,zlib} virtual/perl-ExtUtils-MakeMaker \
+| sed "s/\s/\n/g" \
+| sort \
+| sudo tee /etc/portage/sets/openwrt-prerequisites \
+&& sudo emerge -DuvNa "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
+                        
+                       
     chmod +x /src/*
 
 CMD /src/opbuild.sh
