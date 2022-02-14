@@ -14,7 +14,7 @@ sys-libs/{ncurses,zlib} virtual/perl-ExtUtils-MakeMaker \
 | sed "s/\s/\n/g" \
 | sort \
 | tee /etc/portage/sets/openwrt-prerequisites \
-&& emerge-webrsync && yes yes |emerge -uUD @world && yes yes|emerge -DuvN "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
+&& emerge-webrsync && yes yes|emerge -DuvN "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
                          
                        
     chmod +x /src/*
