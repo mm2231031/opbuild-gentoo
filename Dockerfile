@@ -1,4 +1,4 @@
-FROM gentoo/stage3-amd64:latest
+FROM gentoo/stage3:latest
 MAINTAINER Jack Mo <mo2231031@live.cn>
 ADD src/ /src/
 RUN mkdir -p  /etc/portage/sets/ &&mkdir -p  /opt/opbuild && \
