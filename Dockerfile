@@ -1,7 +1,7 @@
 FROM gentoo/stage3-amd64:latest
 MAINTAINER Jack Mo <mo2231031@live.cn>
 ADD src/ /src/
-RUN emerge-webrsync && mkdir -p  /opt/opbuild && \
+RUN mkdir -p  /etc/portage/sets/ &&mkdir -p  /opt/opbuild && \
         useradd -d /opt/opbuild -s /bin/bash opbuild && \
     chown -R opbuild:opbuild /opt/opbuild && \
         echo \
@@ -14,7 +14,7 @@ sys-libs/{ncurses,zlib} virtual/perl-ExtUtils-MakeMaker \
 | sed "s/\s/\n/g" \
 | sort \
 | tee /etc/portage/sets/openwrt-prerequisites \
-&& emerge -DuvNa "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
+&& emerge-webesync && emerge -DuvNa "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
                         
                        
     chmod +x /src/*
