@@ -13,8 +13,8 @@ sys-apps/util-linux sys-devel/{bc,bin86,dev86} \
 sys-libs/{ncurses,zlib} virtual/perl-ExtUtils-MakeMaker \
 | sed "s/\s/\n/g" \
 | sort \
-| sudo tee /etc/portage/sets/openwrt-prerequisites \
-&& sudo emerge -DuvNa "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
+| tee /etc/portage/sets/openwrt-prerequisites \
+&& emerge -DuvNa "@openwrt-prerequisites" && rm -rf /usr/portage/* && \
                         
                        
     chmod +x /src/*
